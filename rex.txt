@@ -1,0 +1,46 @@
+4) Hping3
+spoof - sudo hping3 -S --scan 1-100 -a 10.20.30.40 192.168.1.105
+udp flood - sudo hping3 --udp --flood --rand-source 192.168.1.105
+icmp flood - sudo hping3 --icmp --flood --rand-source 192.168.1.105
+
+5) Hping
+1) rand src - sudo hping3 --rand-source -c 10 -p 80 192.168.1.105
+2) syn flood - sudo hping3 -S --flood -p 80 192.168.1.105
+3) flags - sudo hping3 -c 1 -p 443 -F -P -U 192.168.1.105
+S - SYN (Note: a typo of SIN)
+
+F - FIN
+
+P - PUSH
+
+R - RESET
+
+A - ACK
+
+U - URGENT
+
+6) Nmap
+1) host discovery - sudo nmap -sn www.srinivasuniversity.edu.in
+2) ping - sudo nmap -sn <ip>
+3) host scan - sudo nmap -F www.srinivasuniversity.edu.in
+
+7) Nmap
+1) port scan - sudo nmap -p 1-100 <ip>
+2) syn - sudo nmap -sS -F www.srinivasuniversity.edu.in
+3) tcp - nmap -sT -F www.srinivasuniversity.edu.in
+
+8) Nmap
+1) udp - sudo nmap -sU -p 53 www.srinivasuniversity.edu.in
+2) IP ini - nmap -sT <ip>
+3) tcp null - sudo nmap -sN -F www.srinivasuniversity.edu.in
+
+9) iptables
+1) rules - sudo iptables -L -v -n
+2) block - sudo iptables -A INPUT -s 203.0.113.51 -j DROP
+3) flush - sudo iptables -F
+
+10) iptables
+1) eth0 - sudo iptables -A INPUT -i eth0 -s 203.0.113.51 -j DROP
+2) tcp - sudo iptables -A OUTPUT -p tcp --dport 1111 -s 203.0.113.51 -j DROP 
+3) delete rules - sudo iptables -L INPUT --line-numbers
+sudo iptables -D INPUT 1
